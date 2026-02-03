@@ -15,3 +15,4 @@ jobs:
         with:
           # Cela va scanner tous les fichiers .sh de ton repo
           scantype: all
+
