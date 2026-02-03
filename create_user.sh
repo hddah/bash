@@ -95,3 +95,4 @@ echo "Mot de passe temporaire : $PASSWORD"
 echo "------------------------------------"
 
 echo "$(date '+%Y-%m-%d %H:%M:%S') - CREATE - User: $USERNAME, Groups: $GROUP_LOG, SSH: $SSH_STATUS, Admin: $USER" >> "$LOG_FILE"
+
