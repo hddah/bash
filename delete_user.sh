@@ -12,20 +12,20 @@ fi
 
 LOG_FILE="/var/log/user_management.log"
 
-# --- Enumeration de TOUS les utilisateurs du systeme ---
+# --- Enumeration des utilisateurs ---
 echo "--- Liste de tous les utilisateurs systeme ---"
 cut -d: -f1 /etc/passwd | sort | column
 echo "-----------------------------------------------"
 
 # --- Identification cible ---
 while true; do
-    read -p "Utilisateur a supprimer : " USERNAME
+    read -r -p "Utilisateur a supprimer : " USERNAME
     [[ -z "$USERNAME" ]] && continue
 
     if id "$USERNAME" &>/dev/null; then
         break
     else
-        read -p "Utilisateur '$USERNAME' introuvable. Reessayer ? (y/n) : " AGAIN
+        read -r -p "Utilisateur '$USERNAME' introuvable. Reessayer ? (y/n) : " AGAIN
         [[ "$AGAIN" =~ ^[Nn]$ ]] && exit 0
     fi
 done
@@ -33,9 +33,10 @@ done
 # --- Nettoyage des processus ---
 if pgrep -u "$USERNAME" > /dev/null; then
     echo "Processus actifs detectes pour l'utilisateur $USERNAME."
-    read -p "Terminer les processus et continuer ? (y/n) : " KILL_IT
+    read -r -p "Terminer les processus et continuer ? (y/n) : " KILL_IT
     if [[ "$KILL_IT" =~ ^[Yy]$ ]]; then
-        killall -u "$USERNAME" || true
+        # pkill est souvent plus précis pour les UID
+        pkill -u "$USERNAME" || true
         sleep 1
     else
         echo "Operation annulee." && exit 1
@@ -44,7 +45,7 @@ fi
 
 # --- Traitement des donnees ---
 echo "1) Supprimer le compte uniquement | 2) Supprimer le compte et le repertoire home"
-read -p "Selection : " MODE
+read -r -p "Selection : " MODE
 
 case $MODE in
     1) userdel "$USERNAME"; DATA="Home conserve" ;;
@@ -55,4 +56,3 @@ esac
 # --- Audit ---
 echo "Utilisateur $USERNAME supprime ($DATA)."
 echo "$(date '+%Y-%m-%d %H:%M:%S') - DELETE - User: $USERNAME, Status: $DATA, Admin: $USER" >> "$LOG_FILE"
-
