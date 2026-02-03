@@ -44,9 +44,10 @@ Script de suppression d'utilisateurs.
           cat/var/log/user_management.log
 
 
-Instalation du repository : 
-git clone https://github.com/hddah/bash.git
-cd bash
+# Instalation du repository : 
+  git clone https://github.com/hddah/bash.git
+
+  cd bash
 
 
 
