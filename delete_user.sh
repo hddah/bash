@@ -55,3 +55,4 @@ esac
 # --- Audit ---
 echo "Utilisateur $USERNAME supprime ($DATA)."
 echo "$(date '+%Y-%m-%d %H:%M:%S') - DELETE - User: $USERNAME, Status: $DATA, Admin: $USER" >> "$LOG_FILE"
+
