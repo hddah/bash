@@ -14,13 +14,13 @@ Script de création sécurisée d'utilisateurs.
   - Journalisation dans /var/log/user_management.log.
 
 # Utilisation : 
-    1. Installé le depot du script : 
+    #1. Installé le depot du script : 
          wget https://raw.githubusercontent.com/hddah/bash/main/create_user.sh
-    2. Donner les permissions d'exécution aux scripts :
+    #2. Donner les permissions d'exécution aux scripts :
          chmod +x ./create_user.sh
-    3. Lancer les scripts avec les privilèges root :
+    #3. Lancer les scripts avec les privilèges root :
          sudo ./create_user.sh
-    4. Pour visualiser les dernières actions d'audit : 
+    #4. Pour visualiser les dernières actions d'audit : 
           cat/var/log/user_management.log
 
 /delete_user.sh
@@ -34,13 +34,13 @@ Script de suppression d'utilisateurs.
   - Journalisation dans /var/log/user_management.log.
 
 # Utilisation : 
-    1. Installé le depot du script : 
+    #1. Installé le depot du script : 
          wget https://raw.githubusercontent.com/hddah/bash/main/delete_user.sh
-    2. Donner les permissions d'exécution aux scripts :
+    #2. Donner les permissions d'exécution aux scripts :
          chmod +x ./delete_user.sh
-    3. Lancer les scripts avec les privilèges root :
+    #3. Lancer les scripts avec les privilèges root :
          sudo ./delete_user.
-    4. Pour visualiser les dernières actions d'audit : 
+    #4. Pour visualiser les dernières actions d'audit : 
           cat/var/log/user_management.log
 
 
